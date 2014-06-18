@@ -22,6 +22,6 @@ apt-get update && apt-get install -qy wget git
 # execute build scenario
 RUN git clone https://github.com/kyxap1/nginx-custom-module.git
 RUN bash nginx-custom-module/compile.sh https://github.com/arut/nginx-rtmp-module.git ubuntu trusty
-# Clean up APT when done. \
+# Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
