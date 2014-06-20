@@ -11,8 +11,8 @@ cp /root/dist/nginx-local.list /etc/apt/sources.list.d/
 DEBMULTIMEDIA_SOURCESLIST=/etc/apt/sources.list.d/deb-multimedia.list
 [[ -f $DEBMULTIMEDIA_SOURCESLIST ]] || cat > $DEBMULTIMEDIA_SOURCESLIST <<EOF
 # debian multimedia repository
-deb http://www.deb-multimedia.org jessie main non-free
-deb-src http://www.deb-multimedia.org jessie main non-free
+deb http://www.deb-multimedia.org wheezy main non-free
+#deb-src http://www.deb-multimedia.org wheezy main non-free
 
 EOF
 
