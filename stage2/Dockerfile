@@ -6,7 +6,7 @@ FROM phusion/baseimage:0.9.11
 
 MAINTAINER Alexander Kyxap <kyxap@pro-manage.net>
 
-EXPOSE 22 80 1935
+EXPOSE 22 80 1935 8080
 
 # Set correct environment variables.
 ENV HOME /root
@@ -21,10 +21,10 @@ CMD ["/sbin/my_init"]
 
 ADD dist /root/dist
 
-RUN bash -x /root/dist/stage2.sh
+RUN bash /root/dist/stage2.sh
 
-RUN rm /etc/apt/sources.list.d/nginx-local.list;        \
-rm -r /opt/deb;                                         \
-rm -rf /root/dist;                                      \
-apt-get clean;                                          \
+RUN rm /etc/apt/sources.list.d/nginx-local.list && \
+rm -r /opt/deb && \
+rm -rf /root/dist && \                          
+apt-get clean && \                       
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

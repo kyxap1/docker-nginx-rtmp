@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # example to run
-# docker run --name rtmp -p 14004:22 -p 1935:1935 -p 80:80 -d rtmp
+# docker run -p 14005:22 -p 80:80 -p 1935:1935 -p 8080:8080 -p 8181:8181 -p 8282:8282 -p 8383:8383 --name rtmp -d rtmp:latest
 
 # stage1
 # A. build .deb
@@ -14,11 +14,12 @@ docker run --name rtmptemp -w /opt --rm=true rtmptemp tar cf - . | ( mkdir -p st
 docker run --name rtmptemp --rm=true rtmptemp cat /etc/apt/sources.list.d/nginx-local.list > stage2/dist/nginx-local.list
 
 # C. build rtmp image
-docker build -t rtmp --rm=true stage2
+docker build -t rtmp:latest --rm=true stage2
 
 # D. delete dir stage2/dist and temp build image
-rm -rf stage2/dist/opt stage2/dist/src stage2/dist/nginx-local.list
+rm -r stage2/dist/opt
+rm stage2/dist/nginx-local.list
 
-docker rmi rtmptemp
+#docker rmi rtmptemp
 
 
